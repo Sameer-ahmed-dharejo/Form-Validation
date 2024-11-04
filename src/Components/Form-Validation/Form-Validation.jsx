@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2';
 const  FormValidation = ()=>{
 
   const [firstName, setFirstName] = useState("");
@@ -15,22 +16,49 @@ const  FormValidation = ()=>{
 
   const registerForm = (e) => {
     e.preventDefault();
-    if(firstName=== ""){
-      setFirstNameErr(true)
+  
+    let hasError = false;
+  
+    if (firstName === "") {
+      setFirstNameErr(true);
+      hasError = true;
     }
-    if(secondName===""){
-      setSeconNameErr(true)
+    if (secondName === "") {
+      setSeconNameErr(true);
+      hasError = true;
     }
-    if(email===""){
-      setEmailErr(true)
+    if (email === "") {
+      setEmailErr(true);
+      hasError = true;
     }
-    if(password===""){
-      setPasswordErr(true)
+    if (password === "") {
+      setPasswordErr(true);
+      hasError = true;
     }
-     if(comfirmPassword===""){
-      setComfirmPasswordErr(true)
+    if (comfirmPassword === "") {
+      setComfirmPasswordErr(true);
+      hasError = true;
+    }
+  
+    if (!hasError) {
+      // Show success alert using SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Registration Successful',
+        text: 'You have registered successfully!',
+        showConfirmButton: false,
+        timer: 3000 // Auto close after 1.5 seconds
+      });
+
+      // Clear the form fields
+      setFirstName("");
+      setSecondName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
     }
   };
+  
 
   useEffect(() => {
     if (firstName !== "") {
@@ -52,8 +80,8 @@ const  FormValidation = ()=>{
  
   return(
     <>
-  <div className="container my-5">
-  <div className="shadow p-5">
+  <div className="d-flex justify-content-center my-5">
+  <div className="shadow p-5 w-25 rounded-2 mb-5">
     <h1 className="mb-4">Register</h1>
     
     <form onSubmit={registerForm}>
@@ -66,7 +94,7 @@ const  FormValidation = ()=>{
           onChange={(e) => setFirstName(e.target.value)} 
           placeholder="First Name" 
         />
-        {firstNameErr && <p className="text-danger">First Name Is Required</p>}
+        {firstNameErr && <p className="text-danger">First Name is required</p>}
       </div>
 
       <div className="mb-3">
@@ -78,7 +106,7 @@ const  FormValidation = ()=>{
           onChange={(e) => setSecondName(e.target.value)} 
           placeholder="Second Name" 
         />
-        {secodNameErr && <p className="text-danger">Second Name Is Required</p>}
+        {secodNameErr && <p className="text-danger">Second name is required</p>}
       </div>
 
       <div className="mb-3">
@@ -90,7 +118,7 @@ const  FormValidation = ()=>{
           onChange={(e) => setEmail(e.target.value)} 
           placeholder="Enter Email" 
         />
-        {emailErr && <p className="text-danger">Email Is Required</p>}
+        {emailErr && <p className="text-danger">Email is required</p>}
       </div>
 
       <div className="mb-3">
@@ -102,7 +130,7 @@ const  FormValidation = ()=>{
           onChange={(e) => setPassword(e.target.value)} 
           placeholder="Enter Password" 
         />
-        {passwordErr && <p className="text-danger">Password Is Required</p>}
+        {passwordErr && <p className="text-danger">Password is required</p>}
       </div>
 
       <div className="mb-4">
@@ -114,13 +142,14 @@ const  FormValidation = ()=>{
           onChange={(e) => setConfirmPassword(e.target.value)} 
           placeholder="Confirm Password" 
         />
-        {comfirmpasswordErr && <p className="text-danger">Confirm Password Is Required</p>}
+        {comfirmpasswordErr && <p className="text-danger">Confirm Password is required</p>}
       </div>
 
       <button type="submit" className="btn btn-success w-100">Register</button>
     </form>
   </div>
 </div>
+
 
     </>
   )
