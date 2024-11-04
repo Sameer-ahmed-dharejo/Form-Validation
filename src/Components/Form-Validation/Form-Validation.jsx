@@ -52,48 +52,76 @@ const  FormValidation = ()=>{
  
   return(
     <>
-    <div className="d-flex justify-content-center mt-5">
-    <div className="shadow p-5">
-      <h1 className="">Register</h1>
-
-   <form onSubmit={registerForm}>
-   <div className="">
-        <label>First name</label> <br />
-        <input value={firstName} type="text" onChange={(e) => setFirstName(e.target.value)}  placeholder="first name" />
-        {firstNameErr && <p className='text-danger'>First Name Is Required</p>} 
+  <div className="container my-5">
+  <div className="shadow p-5">
+    <h1 className="mb-4">Register</h1>
+    
+    <form onSubmit={registerForm}>
+      <div className="mb-3">
+        <label className="form-label">First Name</label>
+        <input 
+          value={firstName} 
+          type="text" 
+          className="form-control" 
+          onChange={(e) => setFirstName(e.target.value)} 
+          placeholder="First Name" 
+        />
+        {firstNameErr && <p className="text-danger">First Name Is Required</p>}
       </div>
 
-      <div className="">
-        <label>Second name</label> <br />
-        <input value={secondName} type="text" onChange={(e)=> setSecondName(e.target.value)} placeholder="second name" /> 
-        {secodNameErr && <p className='text-danger'>Second Name Is Required</p>}
+      <div className="mb-3">
+        <label className="form-label">Second Name</label>
+        <input 
+          value={secondName} 
+          type="text" 
+          className="form-control" 
+          onChange={(e) => setSecondName(e.target.value)} 
+          placeholder="Second Name" 
+        />
+        {secodNameErr && <p className="text-danger">Second Name Is Required</p>}
       </div>
 
-      <div className="">
-        <label>Email</label><br />
-        <input value={email} type="email" onChange={(e)=>setEmail(e.target.value)} placeholder="enter email" />
-        {emailErr && <p className='text-danger'>Email Is Required</p>} 
+      <div className="mb-3">
+        <label className="form-label">Email</label>
+        <input 
+          value={email} 
+          type="email" 
+          className="form-control" 
+          onChange={(e) => setEmail(e.target.value)} 
+          placeholder="Enter Email" 
+        />
+        {emailErr && <p className="text-danger">Email Is Required</p>}
       </div>
 
-      <div className="">
-        <label>Password</label><br />
-        <input value={password} type="password" onChange={(e)=>setPassword(e.target.value)} placeholder="enter password" />
-        {passwordErr && <p className='text-danger'>Password Is Required</p>} 
+      <div className="mb-3">
+        <label className="form-label">Password</label>
+        <input 
+          value={password} 
+          type="password" 
+          className="form-control" 
+          onChange={(e) => setPassword(e.target.value)} 
+          placeholder="Enter Password" 
+        />
+        {passwordErr && <p className="text-danger">Password Is Required</p>}
       </div>
 
-      <div className="">
-        <label>Comfirm password</label><br />
-        <input value={comfirmPassword} type="password" onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="comfirm password" /> 
-        {comfirmpasswordErr && <p className='text-danger'>Comfirm Password Is Required</p>} 
+      <div className="mb-4">
+        <label className="form-label">Confirm Password</label>
+        <input 
+          value={comfirmPassword} 
+          type="password" 
+          className="form-control" 
+          onChange={(e) => setConfirmPassword(e.target.value)} 
+          placeholder="Confirm Password" 
+        />
+        {comfirmpasswordErr && <p className="text-danger">Confirm Password Is Required</p>}
       </div>
 
-<div className="mt-2">
-  <button type="submit" className="btn btn-success">Register</button>
+      <button type="submit" className="btn btn-success w-100">Register</button>
+    </form>
+  </div>
 </div>
-   </form>
 
-    </div>
-    </div>
     </>
   )
 }
